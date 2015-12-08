@@ -1,7 +1,7 @@
 ###Exporatory Data Exercise 1
 
 #Set your own working directory
-#setwd("C:/Users/jkempke/Box Sync/Coursera/")
+setwd("C:/Users/jkempke/Box Sync/Coursera/")
 
 #This data has 2,075,259 rows and 9 columns. Assuming your computers stores each data as 8 bytes,
 #Working with this data will require the following amount of memory (Gb)
@@ -43,6 +43,7 @@ house_power$DateTime <- strptime(house_power$DateTime, format = "%d/%m/%Y %H:%M:
 
 house_power_subset <- house_power[(house_power$Date >= "2007-02-01" & house_power$Date <= "2007-02-02"),]
 
+png(file = "plot4.png")
 par(mfcol = c(2,2))
 with(house_power_subset, {
     plot(DateTime, Global_active_power, type = 'l', xlab = "", ylab="Global Active Power (kilowatts)")
@@ -50,10 +51,8 @@ with(house_power_subset, {
         lines(DateTime, Sub_metering_1)
         lines(DateTime, Sub_metering_2, col = "red")
         lines(DateTime, Sub_metering_3, col = "blue")
-    legend("top", pch = "_", col = c("black","red", "blue"), legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"), bty = 'n', cex = 0.75)
+    legend("topright", pch = "_", col = c("black","red", "blue"), legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"), bty = 'n')
     plot(DateTime, Voltage, type = "l")
     plot(DateTime, Global_reactive_power, type = "l")
 })
-
-dev.copy(png, file = "plot4.png")
 dev.off()

@@ -1,7 +1,7 @@
 ###Exporatory Data Exercise 1
 
 #Set your own working directory
-#setwd("C:/Users/jkempke/Box Sync/Coursera/")
+setwd("C:/Users/jkempke/Box Sync/Coursera/")
 
 #This data has 2,075,259 rows and 9 columns. Assuming your computers stores each data as 8 bytes,
 #Working with this data will require the following amount of memory (Gb)
@@ -43,7 +43,6 @@ house_power$DateTime <- strptime(house_power$DateTime, format = "%d/%m/%Y %H:%M:
 
 house_power_subset <- house_power[(house_power$Date >= "2007-02-01" & house_power$Date <= "2007-02-02"),]
 
-
+png(file = "plot2.png")
 with(house_power_subset, plot(DateTime, Global_active_power, type = 'l', xlab = "", ylab="Global Active Power (kilowatts)"))
-dev.copy(png, file="plot2.png")
 dev.off()
